@@ -1,0 +1,79 @@
+﻿@model IEnumerable<My_Project.Models.Customer>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="p-3 mb-2 bg-secondary-subtle text-emphasis-secondary">
+
+    <h2 style="color:brown">Customer List</h2><br />
+
+    <p>
+        @Html.ActionLink("Create New Customer", "Create", null, new { @class = "btn btn-outline-success" }) |
+        @Html.ActionLink("Listing", "Listing", null, new { @class = "btn btn-outline-secondary" })
+    </p><br />
+
+    <table class="table table-warning table-striped">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Password
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country.country_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_password)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.customer_id }, new { @class = "btn btn-outline-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.customer_id }, new { @class = "btn btn-outline-secondary" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.customer_id }, new { @class = "btn btn-outline-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

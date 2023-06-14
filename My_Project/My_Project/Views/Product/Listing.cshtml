@@ -1,0 +1,74 @@
+﻿@model IEnumerable<My_Project.Models.Product>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .secici {
+        height: 150px;
+        width: 150px;
+        border: solid;
+        border-width: 1px;
+        border-color: lightgrey;
+        border-radius: 10px;
+    }
+
+        .secici img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+</style>
+<div class="bg-primary p-2 text-white bg-opacity-10">
+
+    <h2 style="color:gold">Product List</h2><br />
+
+    @using (Html.BeginForm())
+    {
+        <b style="color:black">Category:</b>@Html.DropDownList("cate_id", null, "All", new { @class = "form-control", onchange = "this.form.submit()" })<br />
+        <b style="color:black">Supplier:</b>@Html.DropDownList("supp_id", null, "All", new { @class = "form-control", onchange = "this.form.submit()" })<br />
+    }
+
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Supplier
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_name)
+                </td>
+                <td>
+                    <div class="secici">
+                        <img src="~/Products_images/@item.product_image" />
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.cate_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.supp_name)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

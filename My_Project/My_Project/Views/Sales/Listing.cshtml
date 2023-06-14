@@ -1,0 +1,86 @@
+﻿@model IQueryable<IGrouping<int, My_Project.Models.Sales>>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listing</h2>
+
+@using (Html.BeginForm("Listing", "Sales"))
+{
+    <b>Date 1:</b>@Html.TextBox("date1", null, new { @class = "form-control" })
+    <br />
+    <b>Date 2:</b>@Html.TextBox("date2", null, new { @class = "form-control" })
+    <br />
+    <b>Personnel:</b>@Html.DropDownList("perr", null, "All", new
+    {
+        @class = "form-control"@*, onchange = "this.form.submit()" *@})
+    <br />
+    <p>
+        <input type="submit" value="List" class="btn btn-outline-primary" /> |
+        @Html.ActionLink("PDF", "siparis_raporu_export", null, new { @class = "btn btn-outline-danger" }) |
+        @Html.ActionLink("Excel", "siparis_raporu_export", null, new { @class = "btn btn-outline-success" })
+    </p>
+}
+
+<table class="table">
+    @foreach (var sale in Model)
+    {
+        <tr>
+            <td colspan="5" style="background-color:antiquewhite">
+                Sales Number:@sale.Key
+            </td>
+        </tr>
+        <tr style="color:darkblue">
+            <th>
+                Product
+            </th>
+            <th>
+                Customer
+            </th>
+            <th>
+                Sale Date
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Personel
+            </th>
+        </tr>
+        foreach (var item in sale)
+        {
+            <tr>
+                <td>
+                    @item.Product.product_name
+                </td>
+                <td>
+                    @item.Customer.customer_name
+                </td>
+                <td>
+                    @item.sale_date.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sale_quantity)
+                </td>
+                <td>
+                    @item.Personnel.per_name
+                </td>
+            </tr>
+        }// For inside
+    }
+</table>
+<script>
+    $("#date1").datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true,
+        language: 'en'
+    });
+</script>
+<script>
+    $("#date2").datepicker({
+        format: 'mm/dd/yyyy',
+        autoclose: true,
+        language: 'en'
+    });
+</script>

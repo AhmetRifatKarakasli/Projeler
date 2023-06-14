@@ -1,0 +1,70 @@
+﻿@model IPagedList<My_Project.Models.Product>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Products</h2>
+<style>
+    .secici {
+        height: 150px;
+        width: 150px;
+        border: solid;
+        border-width: 1px;
+        border-color: lightgrey;
+        border-radius: 10px;
+    }
+
+        .secici img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+</style>
+<table class="table table-striped" align="center">
+    @{ byte counter = 0; }
+    <tr>
+        @foreach (var item in Model)
+        {
+            if (counter != 4)
+            {
+                <td align="center">
+                    <div class="secici">
+                        <img src="~/Products_images/@item.product_image" />
+                    </div>
+                    <br />
+                    @Html.DisplayFor(modelItem => item.product_name)
+                    <br />
+                    @Html.DisplayFor(modelItem => item.product_price)
+                    <br />
+                    @Html.ActionLink("Add to Shopping Cart", "add_carts", "ShopingCart", new { pro_id = item.product_id }, new { @class = "btn btn-outline-success" })
+                </td>
+                counter++;
+            }
+            if (counter == 4) { break; }
+        }
+    </tr>
+
+    @{ counter = 1; }
+    <tr>
+        @foreach (var item in Model)
+        {
+            if (4 < counter)
+            {
+                <td align="center">
+                    <div class="secici">
+                        <img src="~/Products_images/@item.product_image" />
+                    </div>
+                    <br />
+                    @Html.DisplayFor(modelItem => item.product_name)
+                    <br />
+                    @Html.DisplayFor(modelItem => item.product_price)
+                    <br />
+                    @Html.ActionLink("Add to Shopping Cart", "add_carts", "ShopingCart", new { pro_id = item.product_id }, new { @class = "btn btn-outline-success" })
+                </td>
+            }
+            counter++;
+        }
+    </tr>
+    <tr><td colspan="5">@Html.PagedListPager(Model, page => Url.Action("Pages", new { page }), PagedListRenderOptions.Classic)</td></tr>
+</table>

@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Factory_vtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="cate_id" />
+          </Key>
+          <Property Name="cate_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cate_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customer_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="customer_phone" Type="int" Nullable="false" />
+          <Property Name="customer_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="customer_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="depart_id" />
+          </Key>
+          <Property Name="depart_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="depart_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Input">
+          <Key>
+            <PropertyRef Name="input_id" />
+          </Key>
+          <Property Name="input_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_quantity" Type="int" Nullable="false" />
+          <Property Name="input_date" Type="date" Nullable="false" />
+          <Property Name="per_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Output">
+          <Key>
+            <PropertyRef Name="output_id" />
+          </Key>
+          <Property Name="output_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="product_quantity" Type="int" Nullable="false" />
+          <Property Name="output_date" Type="date" Nullable="false" />
+          <Property Name="per_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personnel">
+          <Key>
+            <PropertyRef Name="per_id" />
+          </Key>
+          <Property Name="per_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="per_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="bit" Nullable="false" />
+          <Property Name="per_birth" Type="date" Nullable="false" />
+          <Property Name="per_address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="per_phone" Type="int" Nullable="false" />
+          <Property Name="per_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="depart_id" Type="int" Nullable="false" />
+          <Property Name="type_id" Type="int" Nullable="false" />
+          <Property Name="per_username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="per_password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="product_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="product_image" Type="nvarchar" MaxLength="50" />
+          <Property Name="cate_id" Type="int" Nullable="false" />
+          <Property Name="product_price" Type="int" Nullable="false" />
+          <Property Name="supp_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="sale_id" />
+          </Key>
+          <Property Name="sale_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sale_number" Type="int" Nullable="false" />
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="customer_id" Type="int" Nullable="false" />
+          <Property Name="sale_date" Type="date" Nullable="false" />
+          <Property Name="sale_quantity" Type="int" Nullable="false" />
+          <Property Name="per_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="supp_id" />
+          </Key>
+          <Property Name="supp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="supp_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="supp_address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="supp_phone" Type="int" Nullable="false" />
+          <Property Name="supp_email" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Name="type_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Input_Personnel">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+          <End Role="Input" Type="Self.Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="per_id" />
+            </Principal>
+            <Dependent Role="Input">
+              <PropertyRef Name="per_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Input_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Input" Type="Self.Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Input">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Output_Personnel">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+          <End Role="Output" Type="Self.Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="per_id" />
+            </Principal>
+            <Dependent Role="Output">
+              <PropertyRef Name="per_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Output_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Output" Type="Self.Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Output">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="depart_id" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="depart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="type_id" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="cate_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="cate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="supp_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="supp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Personnel">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="per_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="per_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Factory_vtModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Input" EntityType="Self.Input" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Output" EntityType="Self.Output" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Customer_Country" Association="Self.FK_Customer_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Input_Personnel" Association="Self.FK_Input_Personnel">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Input" EntitySet="Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Input_Product" Association="Self.FK_Input_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Input" EntitySet="Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Output_Personnel" Association="Self.FK_Output_Personnel">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Output" EntitySet="Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Output_Product" Association="Self.FK_Output_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Output" EntitySet="Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Country" Association="Self.FK_Personnel_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Department" Association="Self.FK_Personnel_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Type" Association="Self.FK_Personnel_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Customer" Association="Self.FK_Sales_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Personnel" Association="Self.FK_Sales_Personnel">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Product" Association="Self.FK_Sales_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Country" Association="Self.FK_Supplier_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Factory_vtModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="cate_id" />
+          </Key>
+          <Property Name="cate_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cate_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Category" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_Country" FromRole="Country" ToRole="Customer" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Personnel_Country" FromRole="Country" ToRole="Personnel" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Supplier_Country" FromRole="Country" ToRole="Supplier" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customer_id" />
+          </Key>
+          <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_phone" Type="Int32" Nullable="false" />
+          <Property Name="customer_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customer_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Customer_Country" FromRole="Customer" ToRole="Country" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Customer" FromRole="Customer" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="depart_id" />
+          </Key>
+          <Property Name="depart_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="depart_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Personnel_Department" FromRole="Department" ToRole="Personnel" />
+        </EntityType>
+        <EntityType Name="Input">
+          <Key>
+            <PropertyRef Name="input_id" />
+          </Key>
+          <Property Name="input_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_quantity" Type="Int32" Nullable="false" />
+          <Property Name="input_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="per_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Input_Personnel" FromRole="Input" ToRole="Personnel" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Input_Product" FromRole="Input" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Output">
+          <Key>
+            <PropertyRef Name="output_id" />
+          </Key>
+          <Property Name="output_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="product_quantity" Type="Int32" Nullable="false" />
+          <Property Name="output_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="per_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Output_Personnel" FromRole="Output" ToRole="Personnel" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Output_Product" FromRole="Output" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Personnel">
+          <Key>
+            <PropertyRef Name="per_id" />
+          </Key>
+          <Property Name="per_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="per_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="gender" Type="Boolean" Nullable="false" />
+          <Property Name="per_birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="per_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="per_phone" Type="Int32" Nullable="false" />
+          <Property Name="per_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="depart_id" Type="Int32" Nullable="false" />
+          <Property Name="type_id" Type="Int32" Nullable="false" />
+          <Property Name="per_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="per_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Personnel_Country" FromRole="Personnel" ToRole="Country" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Personnel_Department" FromRole="Personnel" ToRole="Department" />
+          <NavigationProperty Name="Input" Relationship="Self.FK_Input_Personnel" FromRole="Personnel" ToRole="Input" />
+          <NavigationProperty Name="Output" Relationship="Self.FK_Output_Personnel" FromRole="Personnel" ToRole="Output" />
+          <NavigationProperty Name="Type" Relationship="Self.FK_Personnel_Type" FromRole="Personnel" ToRole="Type" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Personnel" FromRole="Personnel" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="product_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="product_image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cate_id" Type="Int32" Nullable="false" />
+          <Property Name="product_price" Type="Int32" Nullable="false" />
+          <Property Name="supp_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Input" Relationship="Self.FK_Input_Product" FromRole="Product" ToRole="Input" />
+          <NavigationProperty Name="Output" Relationship="Self.FK_Output_Product" FromRole="Product" ToRole="Output" />
+          <NavigationProperty Name="Supplier" Relationship="Self.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+          <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Product" FromRole="Product" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="sale_id" />
+          </Key>
+          <Property Name="sale_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sale_number" Type="Int32" Nullable="false" />
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="customer_id" Type="Int32" Nullable="false" />
+          <Property Name="sale_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sale_quantity" Type="Int32" Nullable="false" />
+          <Property Name="per_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Sales_Customer" FromRole="Sales" ToRole="Customer" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Sales_Personnel" FromRole="Sales" ToRole="Personnel" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Sales_Product" FromRole="Sales" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="supp_id" />
+          </Key>
+          <Property Name="supp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="supp_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="supp_address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="supp_phone" Type="Int32" Nullable="false" />
+          <Property Name="supp_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Supplier_Country" FromRole="Supplier" ToRole="Country" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_Product_Supplier" FromRole="Supplier" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Name="type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Personnel" Relationship="Self.FK_Personnel_Type" FromRole="Type" ToRole="Personnel" />
+        </EntityType>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="cate_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="cate_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Supplier_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="Supplier">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customer_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="depart_id" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="depart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Input_Personnel">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+          <End Role="Input" Type="Self.Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="per_id" />
+            </Principal>
+            <Dependent Role="Input">
+              <PropertyRef Name="per_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Input_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Input" Type="Self.Input" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Input">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Output_Personnel">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+          <End Role="Output" Type="Self.Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="per_id" />
+            </Principal>
+            <Dependent Role="Output">
+              <PropertyRef Name="per_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Output_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Output" Type="Self.Output" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Output">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personnel_Type">
+          <End Role="Type" Type="Self.Type" Multiplicity="1" />
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type">
+              <PropertyRef Name="type_id" />
+            </Principal>
+            <Dependent Role="Personnel">
+              <PropertyRef Name="type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Personnel">
+          <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personnel">
+              <PropertyRef Name="per_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="per_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Supplier">
+          <End Role="Supplier" Type="Self.Supplier" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Supplier">
+              <PropertyRef Name="supp_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="supp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Sales" Type="Self.Sales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Factory_vtEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Category" EntityType="Self.Category" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="Input" EntityType="Self.Input" />
+          <EntitySet Name="Output" EntityType="Self.Output" />
+          <EntitySet Name="Personnel" EntityType="Self.Personnel" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" />
+          <EntitySet Name="Supplier" EntityType="Self.Supplier" />
+          <EntitySet Name="Type" EntityType="Self.Type" />
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Country" Association="Self.FK_Customer_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Country" Association="Self.FK_Personnel_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Supplier_Country" Association="Self.FK_Supplier_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Supplier" EntitySet="Supplier" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Customer" Association="Self.FK_Sales_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Department" Association="Self.FK_Personnel_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Input_Personnel" Association="Self.FK_Input_Personnel">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Input" EntitySet="Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Input_Product" Association="Self.FK_Input_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Input" EntitySet="Input" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Output_Personnel" Association="Self.FK_Output_Personnel">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Output" EntitySet="Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Output_Product" Association="Self.FK_Output_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Output" EntitySet="Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personnel_Type" Association="Self.FK_Personnel_Type">
+            <End Role="Type" EntitySet="Type" />
+            <End Role="Personnel" EntitySet="Personnel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Personnel" Association="Self.FK_Sales_Personnel">
+            <End Role="Personnel" EntitySet="Personnel" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+            <End Role="Supplier" EntitySet="Supplier" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Product" Association="Self.FK_Sales_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Factory_vtModelStoreContainer" CdmEntityContainer="Factory_vtEntities">
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="Factory_vtModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="cate_id" ColumnName="cate_id" />
+                <ScalarProperty Name="cate_name" ColumnName="cate_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="Factory_vtModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="Factory_vtModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="customer_address" ColumnName="customer_address" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="customer_phone" ColumnName="customer_phone" />
+                <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+                <ScalarProperty Name="customer_username" ColumnName="customer_username" />
+                <ScalarProperty Name="customer_password" ColumnName="customer_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="Factory_vtModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="depart_id" ColumnName="depart_id" />
+                <ScalarProperty Name="depart_name" ColumnName="depart_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Input">
+            <EntityTypeMapping TypeName="Factory_vtModel.Input">
+              <MappingFragment StoreEntitySet="Input">
+                <ScalarProperty Name="input_id" ColumnName="input_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+                <ScalarProperty Name="input_date" ColumnName="input_date" />
+                <ScalarProperty Name="per_id" ColumnName="per_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Output">
+            <EntityTypeMapping TypeName="Factory_vtModel.Output">
+              <MappingFragment StoreEntitySet="Output">
+                <ScalarProperty Name="output_id" ColumnName="output_id" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_quantity" ColumnName="product_quantity" />
+                <ScalarProperty Name="output_date" ColumnName="output_date" />
+                <ScalarProperty Name="per_id" ColumnName="per_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personnel">
+            <EntityTypeMapping TypeName="Factory_vtModel.Personnel">
+              <MappingFragment StoreEntitySet="Personnel">
+                <ScalarProperty Name="per_id" ColumnName="per_id" />
+                <ScalarProperty Name="per_name" ColumnName="per_name" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="per_birth" ColumnName="per_birth" />
+                <ScalarProperty Name="per_address" ColumnName="per_address" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="per_phone" ColumnName="per_phone" />
+                <ScalarProperty Name="per_email" ColumnName="per_email" />
+                <ScalarProperty Name="depart_id" ColumnName="depart_id" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="per_username" ColumnName="per_username" />
+                <ScalarProperty Name="per_password" ColumnName="per_password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="Factory_vtModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="product_name" ColumnName="product_name" />
+                <ScalarProperty Name="product_image" ColumnName="product_image" />
+                <ScalarProperty Name="cate_id" ColumnName="cate_id" />
+                <ScalarProperty Name="product_price" ColumnName="product_price" />
+                <ScalarProperty Name="supp_id" ColumnName="supp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="Factory_vtModel.Sales">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="sale_id" ColumnName="sale_id" />
+                <ScalarProperty Name="sale_number" ColumnName="sale_number" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
+                <ScalarProperty Name="sale_date" ColumnName="sale_date" />
+                <ScalarProperty Name="sale_quantity" ColumnName="sale_quantity" />
+                <ScalarProperty Name="per_id" ColumnName="per_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supplier">
+            <EntityTypeMapping TypeName="Factory_vtModel.Supplier">
+              <MappingFragment StoreEntitySet="Supplier">
+                <ScalarProperty Name="supp_id" ColumnName="supp_id" />
+                <ScalarProperty Name="supp_name" ColumnName="supp_name" />
+                <ScalarProperty Name="supp_address" ColumnName="supp_address" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="supp_phone" ColumnName="supp_phone" />
+                <ScalarProperty Name="supp_email" ColumnName="supp_email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type">
+            <EntityTypeMapping TypeName="Factory_vtModel.Type">
+              <MappingFragment StoreEntitySet="Type">
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="type_name" ColumnName="type_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="PersonnelDataSet" targetNamespace="http://tempuri.org/PersonnelDataSet.xsd" xmlns:mstns="http://tempuri.org/PersonnelDataSet.xsd" xmlns="http://tempuri.org/PersonnelDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="Factory_vtConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="Factory_vtConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.Factory_vtConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="Per_ReportTableAdapter" GeneratorDataComponentClassName="Per_ReportTableAdapter" Name="Per_Report" UserDataComponentName="Per_ReportTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="Factory_vtConnectionString (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Country.country_id, Country.country_name, Personnel.per_id, Personnel.per_name, Personnel.gender, Personnel.per_birth, Personnel.per_address, Personnel.country_id AS Expr1, Personnel.per_phone, Personnel.per_email, 
+                         Personnel.depart_id, Personnel.type_id, Personnel.per_username, Personnel.per_password, Department.depart_id AS Expr2, Department.depart_name, Type.type_id AS Expr3, Type.type_name
+FROM            Country INNER JOIN
+                         Personnel ON Country.country_id = Personnel.country_id INNER JOIN
+                         Department ON Personnel.depart_id = Department.depart_id INNER JOIN
+                         Type ON Personnel.type_id = Type.type_id</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="country_id" DataSetColumn="country_id" />
+              <Mapping SourceColumn="country_name" DataSetColumn="country_name" />
+              <Mapping SourceColumn="per_id" DataSetColumn="per_id" />
+              <Mapping SourceColumn="per_name" DataSetColumn="per_name" />
+              <Mapping SourceColumn="gender" DataSetColumn="gender" />
+              <Mapping SourceColumn="per_birth" DataSetColumn="per_birth" />
+              <Mapping SourceColumn="per_address" DataSetColumn="per_address" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="per_phone" DataSetColumn="per_phone" />
+              <Mapping SourceColumn="per_email" DataSetColumn="per_email" />
+              <Mapping SourceColumn="depart_id" DataSetColumn="depart_id" />
+              <Mapping SourceColumn="type_id" DataSetColumn="type_id" />
+              <Mapping SourceColumn="per_username" DataSetColumn="per_username" />
+              <Mapping SourceColumn="per_password" DataSetColumn="per_password" />
+              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
+              <Mapping SourceColumn="depart_name" DataSetColumn="depart_name" />
+              <Mapping SourceColumn="Expr3" DataSetColumn="Expr3" />
+              <Mapping SourceColumn="type_name" DataSetColumn="type_name" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PersonnelDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PersonnelDataSet" msprop:Generator_UserDSName="PersonnelDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Per_Report" msprop:Generator_TableClassName="Per_ReportDataTable" msprop:Generator_TableVarName="tablePer_Report" msprop:Generator_TablePropName="Per_Report" msprop:Generator_RowDeletingName="Per_ReportRowDeleting" msprop:Generator_RowChangingName="Per_ReportRowChanging" msprop:Generator_RowEvHandlerName="Per_ReportRowChangeEventHandler" msprop:Generator_RowDeletedName="Per_ReportRowDeleted" msprop:Generator_UserTableName="Per_Report" msprop:Generator_RowChangedName="Per_ReportRowChanged" msprop:Generator_RowEvArgName="Per_ReportRowChangeEvent" msprop:Generator_RowClassName="Per_ReportRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="country_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columncountry_id" msprop:Generator_ColumnPropNameInRow="country_id" msprop:Generator_ColumnPropNameInTable="country_idColumn" msprop:Generator_UserColumnName="country_id" type="xs:int" />
+              <xs:element name="country_name" msprop:Generator_ColumnVarNameInTable="columncountry_name" msprop:Generator_ColumnPropNameInRow="country_name" msprop:Generator_ColumnPropNameInTable="country_nameColumn" msprop:Generator_UserColumnName="country_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="per_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnper_id" msprop:Generator_ColumnPropNameInRow="per_id" msprop:Generator_ColumnPropNameInTable="per_idColumn" msprop:Generator_UserColumnName="per_id" type="xs:int" />
+              <xs:element name="per_name" msprop:Generator_ColumnVarNameInTable="columnper_name" msprop:Generator_ColumnPropNameInRow="per_name" msprop:Generator_ColumnPropNameInTable="per_nameColumn" msprop:Generator_UserColumnName="per_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="gender" msprop:Generator_ColumnVarNameInTable="columngender" msprop:Generator_ColumnPropNameInRow="gender" msprop:Generator_ColumnPropNameInTable="genderColumn" msprop:Generator_UserColumnName="gender" type="xs:boolean" />
+              <xs:element name="per_birth" msprop:Generator_ColumnVarNameInTable="columnper_birth" msprop:Generator_ColumnPropNameInRow="per_birth" msprop:Generator_ColumnPropNameInTable="per_birthColumn" msprop:Generator_UserColumnName="per_birth" type="xs:dateTime" />
+              <xs:element name="per_address" msprop:Generator_ColumnVarNameInTable="columnper_address" msprop:Generator_ColumnPropNameInRow="per_address" msprop:Generator_ColumnPropNameInTable="per_addressColumn" msprop:Generator_UserColumnName="per_address">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:int" />
+              <xs:element name="per_phone" msprop:Generator_ColumnVarNameInTable="columnper_phone" msprop:Generator_ColumnPropNameInRow="per_phone" msprop:Generator_ColumnPropNameInTable="per_phoneColumn" msprop:Generator_UserColumnName="per_phone" type="xs:int" />
+              <xs:element name="per_email" msprop:Generator_ColumnVarNameInTable="columnper_email" msprop:Generator_ColumnPropNameInRow="per_email" msprop:Generator_ColumnPropNameInTable="per_emailColumn" msprop:Generator_UserColumnName="per_email">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="depart_id" msprop:Generator_ColumnVarNameInTable="columndepart_id" msprop:Generator_ColumnPropNameInRow="depart_id" msprop:Generator_ColumnPropNameInTable="depart_idColumn" msprop:Generator_UserColumnName="depart_id" type="xs:int" />
+              <xs:element name="type_id" msprop:Generator_ColumnVarNameInTable="columntype_id" msprop:Generator_ColumnPropNameInRow="type_id" msprop:Generator_ColumnPropNameInTable="type_idColumn" msprop:Generator_UserColumnName="type_id" type="xs:int" />
+              <xs:element name="per_username" msprop:Generator_ColumnVarNameInTable="columnper_username" msprop:Generator_ColumnPropNameInRow="per_username" msprop:Generator_ColumnPropNameInTable="per_usernameColumn" msprop:Generator_UserColumnName="per_username">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="per_password" msprop:Generator_ColumnVarNameInTable="columnper_password" msprop:Generator_ColumnPropNameInRow="per_password" msprop:Generator_ColumnPropNameInTable="per_passwordColumn" msprop:Generator_UserColumnName="per_password">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr2" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" type="xs:int" />
+              <xs:element name="depart_name" msprop:Generator_ColumnVarNameInTable="columndepart_name" msprop:Generator_ColumnPropNameInRow="depart_name" msprop:Generator_ColumnPropNameInTable="depart_nameColumn" msprop:Generator_UserColumnName="depart_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Expr3" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnExpr3" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_UserColumnName="Expr3" type="xs:int" />
+              <xs:element name="type_name" msprop:Generator_ColumnVarNameInTable="columntype_name" msprop:Generator_ColumnPropNameInRow="type_name" msprop:Generator_ColumnPropNameInTable="type_nameColumn" msprop:Generator_UserColumnName="type_name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Per_Report" />
+      <xs:field xpath="mstns:country_id" />
+      <xs:field xpath="mstns:per_id" />
+      <xs:field xpath="mstns:Expr2" />
+      <xs:field xpath="mstns:Expr3" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

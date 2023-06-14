@@ -1,0 +1,75 @@
+﻿@model IEnumerable<My_Project.Models.Customer>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="p-3 mb-2 bg-secondary-subtle text-emphasis-secondary">
+
+    <h2 style="color:brown">Customer List</h2><br />
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            <b>Country:</b>@Html.DropDownList("country_id", null, "All", new { @class = "form-control", onchange = "this.form.submit()" })<br />
+        </div><br />
+    }
+
+    <table class="table table-warning table-striped">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Password
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country.country_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.customer_password)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

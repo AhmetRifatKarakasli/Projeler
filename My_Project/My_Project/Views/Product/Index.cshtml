@@ -1,0 +1,79 @@
+﻿@model IEnumerable<My_Project.Models.Product>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .secici {
+        height: 150px;
+        width: 150px;
+        border: solid;
+        border-width: 1px;
+        border-color: lightgrey;
+        border-radius: 10px;
+    }
+
+        .secici img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+</style>
+<div class="bg-primary p-2 text-white bg-opacity-10">
+
+    <h2 style="color:gold">Product List</h2><br />
+
+    <p>
+        @Html.ActionLink("Create New Product", "Create", null, new { @class = "btn btn-outline-success" }) |
+        @Html.ActionLink("Listing", "Listing", null, new { @class = "btn btn-outline-secondary" })
+    </p><br />
+
+    <table class="table table-dark table-striped">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Supplier
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_name)
+                </td>
+                <td>
+                    <div class="secici">
+                        <img src="~/Products_images/@item.product_image" />
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.cate_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.product_price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier.supp_name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.product_id }, new { @class = "btn btn-outline-primary" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.product_id }, new { @class = "btn btn-outline-secondary" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.product_id }, new { @class = "btn btn-outline-danger" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>

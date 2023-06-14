@@ -1,0 +1,111 @@
+﻿@model IEnumerable<My_Project.Models.Personnel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="p-3 mb-2 bg-primary-subtle text-emphasis-primary">
+
+    <h2 style="color:burlywood">Personnel List</h2><br />
+
+    @using (Html.BeginForm())
+    {
+        <div>
+            <b>Department:</b>@Html.DropDownList("depart_id", null, "All", new { @class = "form-control", onchange = "this.form.submit()" })<br />
+        </div><br />
+    }
+
+    <p>
+        @Html.ActionLink("PDF", "Export", new { id = 1 }, new { @class = "btn btn-danger" })
+        @Html.ActionLink("XLS", "Export", new { id = 2 }, new { @class = "btn btn-success" })
+    </p>
+
+    <table class="table table-success table-striped">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Gender
+            </th>
+            <th>
+                Birth
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Departman
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Password
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_name)
+                </td>
+                <td>
+                    @if (item.gender == true)
+                    {
+                        <b>Female</b>
+                    }
+                    else
+                    {
+                        <b>Male</b>
+                    }
+                </td>
+                <td>
+                    @item.per_birth.ToShortDateString()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country.country_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.depart_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type.type_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.per_password)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
